@@ -2579,7 +2579,7 @@ class Gmailfs(Fuse):
 	#write_out(dirent, "flush")
 	#write_out(dirent.inode, "flush")
 	while self.nr_dirty_objects() > 0:
-		print "there are still dirty objects, sleeping..."
+		print "flush: there are still %d dirty objects, sleeping..." % (self.nr_dirty_objects())
 		time.sleep(1)
 	if "IMAPFS_FSCK_ON_FLUSH" in os.environ:
 		print "now fscking"
