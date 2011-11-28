@@ -2135,7 +2135,7 @@ class Gmailfs(Fuse):
 
     def parse_dirent_msg(self, msg):
         subject_re = self.format_dirent_subj('(.*)')
-	subject = msg['Subject'].replace("\r\n\t", " ")
+	subject = msg['Subject'].translate(string.maketrans('\r\n\t', '   '))
         m = re.match(subject_re, subject)
 	log_debug3("looking for regex: '%s'" % (subject_re))
 	log_debug3("subject: '%s'" % (subject))
